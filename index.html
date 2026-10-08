@@ -51,13 +51,24 @@ header{
 }
 body.dark {
   background-color: #3B0A11 !important;
-  color: #ffffff;
+  color: #FDE68A !important; /* Chữ màu vàng kim nhạt sang trọng */
 }
 
 body.dark header {
   background: rgba(59, 10, 17, 0.85);
 }
 
+/* Đổi màu tiêu đề và mô tả sang màu vàng kim */
+body.dark h1, body.dark p, body.dark .section-title {
+  color: #FDE68A !important;
+}
+
+/* Khung bọc badge nhỏ ở trên (DUY BOM STORE) */
+body.dark .badge, body.dark h1 span {
+  background: rgba(254, 240, 138, 0.15) !important;
+  color: #FEF08A !important;
+  border: 1px solid rgba(254, 240, 138, 0.3) !important;
+}
 .navbar{
   max-width:1100px;
   height:100px;
