@@ -1,882 +1,113 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DUY BOM STORE - Minecraft & Roblox</title>
-  <link rel="icon" type="image/png" href="B8708FFF-2873-425E-81A6-76FECF2C4C74.png">
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-:root{
-  --bg:#f4f6fb;
-  --card:#ffffff;
-  --text:#8B0000;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --primary:#635bff;
-  --primary2:#8b5cf6;
-  --shadow:0 12px 35px rgba(0,0,0,.08);
-}
-
-body.dark{
-  --bg:#090b10;
-  --card:#141720;
-  --text:#f8fafc;
-  --muted:#9ca3af;
-  --border:#272b36;
-  --shadow:0 12px 35px rgba(0,0,0,.35);
-}
-
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
-  transition:.25s;
-}
-
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter:blur(15px);
-  background:rgba(255,255,255,.82);
-  
-}
-body.dark {
-  background-color: #3B0A11 !important;
-  color: #FDE68A !important; /* Chữ màu vàng kim nhạt sang trọng */
-}
-
-body.dark header {
-  background: rgba(59, 10, 17, 0.85);
-}
-
-/* Đổi màu tiêu đề và mô tả sang màu vàng kim */
-body.dark h1, body.dark p, body.dark .section-title {
-  color: #FDE68A !important;
-}
-
-/* Khung bọc badge nhỏ ở trên (DUY BOM STORE) */
-body.dark .badge, body.dark h1 span {
-  background: rgba(254, 240, 138, 0.15) !important;
-  color: #FEF08A !important;
-  border: 1px solid rgba(254, 240, 138, 0.3) !important;
-}
-.navbar{
-  max-width:1100px;
-  height:100px;
-  margin:auto;
-  padding:0 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  text-decoration:none;
-  color:var(--text);
-  font-size:24px;
-  font-weight:900;
-}
-
-.logo span{
-  color:var(--primary);
-}
-
-.theme-btn{
-  width:42px;
-  height:42px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:var(--card);
-  cursor:pointer;
-  font-size:18px;
-}
-
-.hero{
-  max-width:1100px;
-  margin:auto;
-  padding:65px 18px 35px;
-  text-align:center;
-}
-
-.badge{
-  display:inline-block;
-  padding:7px 13px;
-  border-radius:999px;
-  background:rgba(139, 0, 0, 0.08);
-  color:#8B0000;
-  border:1px solid rgba(139, 0, 0, 0.2);
-  font-size:13px;
-  font-weight:800;
-  margin-bottom:16px;
-}
-
-.hero h1{
-  font-size:clamp(35px,7vw,58px);
-  line-height:1.05;
-  letter-spacing:-2px;
-  margin-bottom:17px;
-}
-
-.hero h1 span{
-  color:var(--primary);
-}
-
-.hero p{
-  max-width:650px;
-  margin:auto;
-  color:var(--muted);
-  line-height:1.7;
-}
-
-.products{
-  max-width:1100px;
-  margin:auto;
-  padding:15px 18px;
-}
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-
-.section-title h2{
-  font-size:25px;
-}
-
-.count{
-  color:var(--muted);
-  font-size:14px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
-}
-
-.card{
-  overflow:hidden;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  transition:.25s;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-}
-
-.product-image{
-  width:100%;
-  aspect-ratio:16/10;
-  object-fit:cover;
-  display:block;
-  background:#eee;
-}
-
-.info{
-  padding:18px;
-}
-
-.name{
-  font-size:19px;
-  font-weight:800;
-  margin-bottom:8px;
-}
-
-.description{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.5;
-  margin-bottom:18px;
-}
-
-.bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
-.price{
-  color:var(--primary);
-  font-size:20px;
-  font-weight:900;
-}
-
-.buy{
-  border:0;
-  padding:12px 18px;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--primary),var(--primary2));
-  color:white;
-  font-weight:800;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.buy:hover{
-  transform:scale(1.04);
-  box-shadow:0 8px 22px rgba(99,91,255,.3);
-}
-
-footer{
-  margin-top:65px;
-  border-top:1px solid var(--border);
-  padding:28px 18px;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* MODAL */
-
-.overlay{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  background:rgba(0,0,0,.68);
-  backdrop-filter:blur(8px);
-}
-
-.overlay.show{
-  display:flex;
-}
-
-.modal{
-  width:100%;
-  max-width:470px;
-  max-height:94vh;
-  overflow:auto;
-  position:relative;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:24px;
-  animation:popup .22s ease;
-}
-
-@keyframes popup{
-  from{
-    opacity:0;
-    transform:translateY(15px) scale(.97);
-  }
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.close{
-  position:absolute;
-  right:17px;
-  top:17px;
-  width:36px;
-  height:36px;
-  border:1px solid var(--border);
-  border-radius:50%;
-  background:var(--card);
-  color:var(--text);
-  font-size:22px;
-  cursor:pointer;
-}
-
-.modal h2{
-  font-size:25px;
-  margin-bottom:5px;
-}
-
-.subtitle{
-  color:var(--muted);
-  font-size:13px;
-  margin-bottom:18px;
-}
-
-.selected{
-  background:rgba(99,91,255,.09);
-  border-radius:14px;
-  padding:14px;
-  margin-bottom:18px;
-}
-
-.selected-name{
-  font-weight:800;
-  margin-bottom:5px;
-}
-
-.selected-price{
-  color:var(--primary);
-  font-size:21px;
-  font-weight:900;
-}
-
-.qr-box{
-  width:245px;
-  padding:12px;
-  margin:0 auto 20px;
-  background:white;
-  border-radius:18px;
-  box-shadow:0 5px 25px rgba(0,0,0,.15);
-}
-
-.qr-box img{
-  width:100%;
-  display:block;
-}
-
-.bank-info{
-  display:grid;
-  gap:9px;
-}
-
-.row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  padding:12px;
-  border:1px solid var(--border);
-  border-radius:11px;
-}
-
-.label{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.value{
-  font-size:14px;
-  font-weight:800;
-  text-align:right;
-  word-break:break-word;
-}
-
-.copy{
-  width:100%;
-  border:0;
-  padding:13px;
-  margin-top:15px;
-  border-radius:12px;
-  background:var(--text);
-  color:var(--card);
-  font-weight:800;
-  cursor:pointer;
-}
-
-.note{
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.55;
-  text-align:center;
-  margin-top:13px;
-}
-
-/* MOBILE */
-
-@media(max-width:650px){
-
-  .navbar{
-    height:62px;
-  }
-
-  .hero{
-    padding-top:45px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-
-  .product-image{
-    aspect-ratio:16/9;
-  }
-
-  .modal{
-    padding:19px;
-  }
-
-}
-
-@media(max-width:380px){
-
-  .bottom{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .buy{
-    width:100%;
-  }
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cửa Hàng Thẻ Game & Giftcard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
 
-<header>
-  <nav class="navbar">
-<a href="/" class="logo">
-  <img src="https://i.postimg.cc/P5QwM2mz/B8708FFF-2873-425E-81A6-76FECF2C4C74.png" alt="Logo" style="height: 110px; width: auto; margin-top: 50px;">
-</a>
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
-      🌙
-    </button>
-  </nav>
-</header>
+  <!-- Thanh Header -->
+  <header class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-gamepad"></i> SHOP GAME
+    </div>
 
-<section class="hero">
-  <div class="badge" style="font-size: 22px;">
-    ⚡ DUY BOM STORE • Minecraft & Roblox
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Tìm kiếm sản phẩm...">
+    </div>
+
+    <div class="user-actions">
+      <!-- Nút Đăng nhập / Đăng ký giống trong ảnh -->
+      <button class="btn-auth" id="openAuthBtn">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="userStatusText">Đăng nhập/Đăng ký</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Danh sách sản phẩm mẫu -->
+  <main class="container">
+    <h2 class="section-title">Sản phẩm nổi bật</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="card-img">
+          <i class="fa-solid fa-gift icon-lg"></i>
+          <h3>GIFT CARD GIÁ RẺ</h3>
+        </div>
+        <div class="card-body">
+          <p class="price">50.000 VNĐ</p>
+          <button class="btn-buy">Mua ngay</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">
+          <i class="fa-brands fa-nintendo-switch icon-lg"></i>
+          <h3>GIFT CARD NINTENDO</h3>
+        </div>
+        <div class="card-body">
+          <p class="price">100.000 VNĐ</p>
+          <button class="btn-buy">Mua ngay</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">
+          <i class="fa-solid fa-cube icon-lg"></i>
+          <h3>MINECRAFT GIFTCARD</h3>
+        </div>
+        <div class="card-body">
+          <p class="price">200.000 VNĐ</p>
+          <button class="btn-buy">Mua ngay</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Hộp thoại Popup Đăng nhập / Đăng ký -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-box">
+      <button class="close-btn" id="closeModalBtn">&times;</button>
+      
+      <!-- Tab chuyển Đăng nhập / Đăng ký -->
+      <div class="tab-header">
+        <button class="tab-btn active" id="tabLogin">Đăng Nhập</button>
+        <button class="tab-btn" id="tabRegister">Đăng Ký</button>
+      </div>
+
+      <!-- Form Đăng Nhập -->
+      <form id="formLogin" class="auth-form active">
+        <div class="input-group">
+          <label>Tên tài khoản / Email</label>
+          <input type="text" id="loginUser" required placeholder="Nhập tên đăng nhập">
+        </div>
+        <div class="input-group">
+          <label>Mật khẩu</label>
+          <input type="password" id="loginPass" required placeholder="Nhập mật khẩu">
+        </div>
+        <button type="submit" class="btn-submit">Đăng Nhập</button>
+      </form>
+
+      <!-- Form Đăng Ký -->
+      <form id="formRegister" class="auth-form">
+        <div class="input-group">
+          <label>Tên tài khoản</label>
+          <input type="text" id="regUser" required placeholder="Tạo tên tài khoản">
+        </div>
+        <div class="input-group">
+          <label>Mật khẩu</label>
+          <input type="password" id="regPass" required placeholder="Tạo mật khẩu">
+        </div>
+        <button type="submit" class="btn-submit">Đăng Ký Tài Khoản</button>
+      </form>
+    </div>
   </div>
 
-  <h1 style="font-size: 48px;">
-    Uy Tín - An Toàn
-    <br>
-    Chính hãng
-  </h1>
-
-  <p style="font-size: 20px;">
-    Cảm ơn mọi người ủng hộ!!!
-  </p>
-</section>
-
-<main class="products">
-
-  <div class="section-title">
-    <h2>Sản phẩm</h2>
-    <span class="count">2 sản phẩm</span>
-  </div>
-
-  <div class="grid">
-
-    <!-- SẢN PHẨM 1 -->
-
-    <article class="card">
-
-      <img
-        class="product-image"
-        src="https://i.postimg.cc/VNZzPXY2/IMG-5224.jpg"
-        alt="Mua MC vĩnh viễn ios"
-        loading="lazy"
-      >
-
-      <div class="info">
-
-        <div class="name">
-          Mua MC vĩnh viễn ios
-        </div>
-
-        <div class="description">
-          Mua Minecraft vĩnh viễn trên iOS.
-        </div>
-
-        <div class="bottom">
-
-          <div class="price">
-            194.000đ
-          </div>
-
-          <button class="buy" onclick="openPayment(194000,'Mua MC vĩnh viễn ios')">
-            Mua ngay
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-
-
-    <!-- SẢN PHẨM 2 -->
-
-    <article class="card">
-
-      <img
-        class="product-image"
-        src="https://i.postimg.cc/1XCGpCsf/IMG-5227.jpg"
-        alt="Thuê ID Apple"
-        loading="lazy"
-      >
-
-      <div class="info">
-
-        <div class="name">
-          Thuê ID Apple
-        </div>
-
-        <div class="description">
-          Dịch vụ thuê ID Apple theo sản phẩm.
-        </div>
-
-        <div class="bottom">
-
-          <div class="price">
-            19.999đ
-          </div>
-
-          <button class="buy" onclick="openPayment(19999,'Thuê ID Apple')">
-            Mua ngay
-          </button>
-
-        </div>
-
-      </div>
-
-    </article>
-
-  </div>
-
-</main>
-
-<footer>
-  © 2026 DUY STORE — Game & App iOS
-</footer>
-
-
-<!-- POPUP THANH TOÁN -->
-
-<div class="overlay" id="overlay" onclick="outsideClose(event)">
-
-  <div class="modal">
-
-    <button class="close" onclick="closePayment()">
-      ×
-    </button>
-
-    <h2>Thanh toán</h2>
-
-    <div class="subtitle">
-      Quét mã VietQR để chuyển khoản
-    </div>
-
-
-    <div class="selected">
-
-      <div class="selected-name" id="productName">
-        Sản phẩm
-      </div>
-
-      <div class="selected-price" id="productPrice">
-        0đ
-      </div>
-
-    </div>
-
-
-    <!-- VIETQR -->
-
-    <div class="qr-box">
-
-      <img id="qrImage" src="" alt="VietQR thanh toán">
-
-    </div>
-
-
-    <div class="bank-info">
-
-      <div class="row">
-
-        <span class="label">
-          Ngân hàng
-        </span>
-
-        <span class="value">
-          MB Bank
-        </span>
-
-      </div>
-
-
-      <div class="row">
-
-        <span class="label">
-          Số tài khoản
-        </span>
-
-        <span class="value">
-          2620093152009
-        </span>
-
-      </div>
-
-
-      <div class="row">
-
-        <span class="label">
-          Chủ tài khoản
-        </span>
-
-        <span class="value">
-          PHAM DUC DUY
-        </span>
-
-      </div>
-
-
-      <div class="row">
-
-        <span class="label">
-          Số tiền
-        </span>
-
-        <span class="value" id="amount">
-          0đ
-        </span>
-
-      </div>
-
-
-      <div class="row">
-
-        <span class="label">
-          Nội dung
-        </span>
-
-        <span class="value" id="content">
-          DUYSTORE
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <button class="copy" onclick="copyContent()">
-      📋 Sao chép nội dung chuyển khoản
-    </button>
-
-
-    <div class="note">
-      Vui lòng chuyển đúng số tiền và nội dung chuyển khoản.
-      Sau khi thanh toán, hãy liên hệ với shop để được hỗ trợ.
-    </div>
-
-  </div>
-
-</div>
-
-
-<script>
-
-/* ===============================
-   THÔNG TIN SHOP
-   =============================== */
-
-const BANK_CODE = "MB";
-const ACCOUNT_NUMBER = "2620093152009";
-const ACCOUNT_NAME = "PHAM DUC DUY";
-
-
-/* ===============================
-   ĐỊNH DẠNG TIỀN
-   =============================== */
-
-function money(number){
-
-  return new Intl.NumberFormat("vi-VN",{
-    style:"currency",
-    currency:"VND",
-    maximumFractionDigits:0
-  }).format(number);
-
-}
-
-
-/* ===============================
-   TẠO NỘI DUNG CHUYỂN KHOẢN
-   =============================== */
-
-function createContent(productName){
-
-  if(productName.includes("Minecraft")){
-    return "DUYMC194K";
-  }
-
-  return "DUYIDAPPLE";
-}
-
-
-/* ===============================
-   MỞ POPUP
-   =============================== */
-
-function openPayment(price,productName){
-
-  const content = createContent(productName);
-
-  document.getElementById("productName").textContent =
-    productName;
-
-  document.getElementById("productPrice").textContent =
-    money(price);
-
-  document.getElementById("amount").textContent =
-    money(price);
-
-  document.getElementById("content").textContent =
-    content;
-
-
-  /*
-    TẠO VIETQR
-
-    QR sẽ tự động có:
-    - MB Bank
-    - Số tài khoản
-    - Số tiền
-    - Nội dung chuyển khoản
-    - Tên chủ tài khoản
-  */
-
-  const qr =
-    "https://img.vietqr.io/image/" +
-    BANK_CODE +
-    "-" +
-    ACCOUNT_NUMBER +
-    "-compact2.png" +
-    "?amount=" +
-    encodeURIComponent(price) +
-    "&addInfo=" +
-    encodeURIComponent(content) +
-    "&accountName=" +
-    encodeURIComponent(ACCOUNT_NAME);
-
-
-  document.getElementById("qrImage").src = qr;
-
-
-  document.getElementById("overlay")
-    .classList.add("show");
-
-  document.body.style.overflow = "hidden";
-
-}
-
-
-/* ===============================
-   ĐÓNG POPUP
-   =============================== */
-
-function closePayment(){
-
-  document.getElementById("overlay")
-    .classList.remove("show");
-
-  document.body.style.overflow = "";
-
-}
-
-
-/* ===============================
-   CLICK RA NGOÀI POPUP
-   =============================== */
-
-function outsideClose(event){
-
-  if(event.target === document.getElementById("overlay")){
-    closePayment();
-  }
-
-}
-
-
-/* ===============================
-   PHÍM ESC
-   =============================== */
-
-document.addEventListener("keydown",function(event){
-
-  if(event.key === "Escape"){
-    closePayment();
-  }
-
-});
-
-
-/* ===============================
-   COPY NỘI DUNG
-   =============================== */
-
-function copyContent(){
-
-  const text =
-    document.getElementById("content").textContent;
-
-  navigator.clipboard.writeText(text).then(function(){
-
-    const button =
-      document.querySelector(".copy");
-
-    const old =
-      button.textContent;
-
-    button.textContent =
-      "✓ Đã sao chép";
-
-    setTimeout(function(){
-
-      button.textContent = old;
-
-    },1800);
-
-  });
-
-}
-
-
-/* ===============================
-   DARK / LIGHT MODE
-   =============================== */
-
-function toggleTheme(){
-
-  document.body.classList.toggle("dark");
-
-  const dark =
-    document.body.classList.contains("dark");
-
-  document.getElementById("themeBtn").textContent =
-    dark ? "☀️" : "🌙";
-
-  localStorage.setItem(
-    "duyStoreTheme",
-    dark ? "dark" : "light"
-  );
-
-}
-
-
-/* ===============================
-   NHỚ GIAO DIỆN
-   =============================== */
-
-if(localStorage.getItem("duyStoreTheme")==="dark"){
-
-  document.body.classList.add("dark");
-
-  document.getElementById("themeBtn").textContent =
-    "☀️";
-
-}
-
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
